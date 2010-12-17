@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  web_number: MyString
+  last_login: 2010-12-17
+
+two:
+  web_number: MyString
+  last_login: 2010-12-17
