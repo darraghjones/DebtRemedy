@@ -1,4 +1,10 @@
 DebtRemedy::Application.routes.draw do
+  resources :client_answers
+
+  resources :data_items
+
+  resources :clients
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
