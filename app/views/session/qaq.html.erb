@@ -1,0 +1,20 @@
+<h1>Session#qaq</h1>
+<%form_tag do %>
+
+<table
+
+<tr><td>Have you recently received a County Court claim form or Sheriff Court citation, which you have not yet responded to?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Have you recently received a letter about bailiffs coming to your home, which you have not yet responded to?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Are you paying the minimum or less on any of your credit cards each month?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Do you struggle to find the money to pay your bills on time?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Has a debt collection agency contacted you about an unpaid bill?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Are you paying late fees on overdue credit or store card bills?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Are you using credit to live on?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Are you self employed?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Are you a UK citizen?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+<tr><td>Do you live in the UK?</td><td><%=yes_no_radio_buttons()%></td><td></td></tr>
+</table>
+
+<%=submit_tag "Submit"%>
+
+<%end%>

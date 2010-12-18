@@ -1,4 +1,53 @@
 DebtRemedy::Application.routes.draw do
+  get "session/new"
+
+  get "session/create"
+
+  get "session/update"
+
+  get "session/qaq"
+  post "session/qaq", :to => "session#qaq_submit"
+
+  get "session/web_number"
+
+  get "session/about_you"
+  put "session/about_you", :to => "session#about_you_submit"
+
+  get "session/your_income"
+  put "session/your_income", :to => "session#your_income_submit"
+
+  get "session/priority"
+  put "session/priority", :to => "session#priority_submit"
+
+  get "session/other_expenses"
+  put "session/other_expenses", :to => "session#other_expenses_submit"
+
+  get "session/living_expenses"
+  put "session/living_expenses", :to => "session#living_expenses_submit"
+
+  get "session/assets"
+  put "session/assets", :to => "session#assets_submit"
+
+  get "session/who_you_owe"
+  put "session/who_you_owe", :to => "session#who_you_owe_submit"
+
+  get "session/last_not_least"
+  put "session/last_not_least", :to => "session#last_not_least_submit"
+
+  get "session/please_wait"
+
+  get "session/recommendation"
+
+  get "session/remedy"
+
+  get "session/email_booklet"
+
+  get "session/your_details"
+
+  get "session/logout"
+
+  get "session/closure"
+
   resources :client_answers
 
   resources :data_items

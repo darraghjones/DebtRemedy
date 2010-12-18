@@ -1,0 +1,31 @@
+<h1>Session#assets</h1>
+
+
+<%form_for(@client, :url => {:action => :assets}) do |f| %>
+
+<h3>Your property</h3>
+
+<table>
+
+<tr><td></td><td>Who owns the property?</td>
+<td><%=f.select :property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
+<table>
+
+<h3>Other property</h3>
+
+<table>
+
+<tr><td></td><td>Do you own or have a share in any other property?</td>
+<td><%=f.yes_no_radio_buttons :any_other_property%></td></tr>
+<tr><td></td><td>Who owns the other property?</td>
+<td><%=f.select :other_property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
+
+</table>
+
+
+<h3>Other assets</h3>
+
+
+<%=submit_tag "Next" %>
+
+<%end%>

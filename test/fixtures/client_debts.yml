@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  creditor: MyString
+  type: MyString
+  owner: MyString
+  balance: MyString
+  client_id: 1
+
+two:
+  creditor: MyString
+  type: MyString
+  owner: MyString
+  balance: MyString
+  client_id: 1

@@ -1,0 +1,18 @@
+<h1>Session#your_income</h1>
+
+
+
+<%form_for(@client, :url => {:action => :your_income}) do |f| %>
+
+<table>
+<tr><th>&nbsp;</th><th>&nbsp;</th><th>Amount</th><th>How often</th></tr>
+<tr><td></td><td>Your take home pay</td>
+<td><%=f.text_field :take_home_pay%></td>
+<td><%=f.frequency_select :take_home_pay%></td></tr>
+
+</table>
+
+<%=submit_tag "Next" %>
+
+<%end%>
+

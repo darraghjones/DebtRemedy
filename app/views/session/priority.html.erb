@@ -1,0 +1,20 @@
+<h1>Session#priority</h1>
+
+
+
+<%form_for @client, :url => {:action => :priority} do |f| %>
+
+<table>
+
+<tr><td></td><td>Mortgage</td><td><%=f.text_field :mortgage%></td>
+<td><%=f.frequency_select :mortgage%></td>
+<td><%=f.yes_no_radio_buttons :mortgage_arrears%></td></tr>
+
+</table>
+
+
+<%=submit_tag "Next"%>
+
+
+<%end%>
+

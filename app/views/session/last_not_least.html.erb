@@ -1,0 +1,15 @@
+<h1>Session#last_not_least</h1>
+
+<%form_for(@client, :url => {:action => :last_not_least}) do |f| %>
+
+<table>
+
+<tr><td>i<%=f.label :accountant, "Institute of Chartered Accountants in England and Wales"%></td>
+<td><%=f.check_box :accountant %></td></tr>
+
+
+</table>
+
+<%=submit_tag "Next"%>
+
+<%end%>

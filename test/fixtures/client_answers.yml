@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20101217214815
+#
+# Table name: client_answers
+#
+#  id           :integer         not null, primary key
+#  value        :string(255)
+#  client_id    :integer
+#  data_item_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

@@ -1,0 +1,16 @@
+<h1>Session#living_expenses</h1>
+
+
+<%form_for(@client, :url => {:action => :living_expenses}) do |f| %>
+
+<table>
+<tr><th>&nbsp;</th><th>&nbsp;</th><th>Monthly amount</th></tr>
+<tr><td></td><td>Food, toiletries, cleaning</td>
+<td><%=f.text_field :food_etc%></td></tr>
+
+</table>
+
+<%=submit_tag "Next" %>
+
+<%end%>
+

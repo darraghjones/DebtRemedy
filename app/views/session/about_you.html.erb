@@ -1,0 +1,41 @@
+<h1>Session#about_you</h1>
+
+
+<%form_for(@client, :url => {:action => :about_you}) do |f| %>
+
+
+<table>
+
+<tr><td></td><td>Who is your CCCS Debt Remedy for?</td>
+<td><%=f.select(:debt_remedy_for, [please_select,['Me', 0],['My partner and I',1]])%></td><td></td></tr>
+<tr><td></td><td>Besides you and your partner, how many additional adults share your home?</td>
+<td><%=f.select :num_adults, [['',nil]] + (0..9).map {|n| [n,n]} %></td><td></td></tr>
+<tr><td></td><td>Is your partner aware of the financial situation?</td>
+<td><%=f.select :partner_aware, [please_select, ['Yes / not applicable', 0], ['No', 1]]%></td><td></td></tr>
+<tr><td></td><td>How many children aged under 18 live in your home?</td>
+<td><%=f.select :num_children, [['', nil]] + (0..12).map {|n| [n,n]}%></td><td></td></tr>
+<tr><td></td><td>Where in the United Kingdom do you live?</td>
+<td><%=f.select :where_in_uk, [please_select,['England / Wales', 'eng_wales'],['Scotland', 'scotland'], ['Northern Ireland','northern_ireland']]%></td><td></td></tr>
+<tr><td></td><td>What is your marital status?</td>
+<td><%=f.select :maritial_status, [please_select, ['Divorced / seperated','div_sep'], ['Single','single']]%></td><td></td></tr>
+<tr><td></td><td>How old are you?</td><td></td><td></td></tr>
+<tr><td></td><td>Are you male or female?</td><td></td><td></td></tr>
+<tr><td></td><td>What is your housing status?</td><td></td><td></td></tr>
+<tr><td></td><td>If you're renting, what type of tenancy agreement do you have?</td><td></td><td></td></tr>
+<tr><td></td><td>How many vehicles do you pay running costs and/or parking for?</td><td></td><td></td></tr>
+<tr><td></td><td>How many items do you have on hire purchase?</td><td></td><td></td></tr>
+<tr><td></td><td>Do you have any pets?</td><td></td><td></td></tr>
+<tr><td></td><td>Over the last 2 weeks, how often have you been bothered by any of the following problems:</td><td></td><td></td></tr>
+<tr><td></td><td>Little interest or pleasure in doing things?</td><td></td><td></td></tr>
+<tr><td></td><td>Feeling down, depressed or hopeless?</td><td></td><td></td></tr>
+<tr><td></td><td>Feeling nervous, anxious or on edge?</td><td></td><td></td></tr>
+<tr><td></td><td>Not being able to stop or control worrying?</td><td></td><td></td></tr>
+
+</table>
+
+
+<%=submit_tag "Next" %>
+
+<%end%>
+
+

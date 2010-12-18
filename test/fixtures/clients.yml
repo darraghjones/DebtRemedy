@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20101217214815
+#
+# Table name: clients
+#
+#  id         :integer         not null, primary key
+#  web_number :string(255)
+#  last_login :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:

@@ -1,0 +1,21 @@
+<h1>Session#who_you_owe</h1>
+
+
+<%form_for(@client, :url => {:action => :who_you_owe}) do |f| %>
+
+<table>
+
+<%f.fields_for :client_debts do |f2| %>
+
+<tr><th>Creditor name</th><th>Debt type</th><th>Owner of debt</th><th>Outstanding balance</th><th>Contratual payment</th></tr>
+<tr><td><%=f2.text_field :creditor%></td><td><%=f2.text_field :type%></td>
+<td><%=f2.text_field :owner%></td>
+<td><%=f2.text_field :balance%></td><td><%=f2.check_box :_destroy%><%=f2.label :_destroy, "Delete?"%></td></tr>
+
+<%end%>
+
+<table>
+
+<%=submit_tag "Next"%>
+
+<%end%>

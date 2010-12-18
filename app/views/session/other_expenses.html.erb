@@ -1,0 +1,16 @@
+<h1>Session#other_expenses</h1>
+
+<%form_for(@client, :url => {:action => :other_expenses}) do |f| %>
+
+<table>
+<tr><th>&nbsp;</th><th>&nbsp;</th><th>Amount</th><th>How often</th></tr>
+<tr><td></td><td>Building and contents insurance</td>
+<td><%=f.text_field :building_insurance%></td>
+<td><%=f.frequency_select :building_insurance%></td></tr>
+
+</table>
+
+<%=submit_tag "Next" %>
+
+<%end%>
+
