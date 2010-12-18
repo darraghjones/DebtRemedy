@@ -1,3 +1,5 @@
+require 'calculations'
+
 # == Schema Information
 # Schema version: 20101217214815
 #
@@ -11,6 +13,7 @@
 #
 
 class Client < ActiveRecord::Base
+  include Calculations
   has_many :client_answers
   has_many :client_debts
   accepts_nested_attributes_for :client_debts, :reject_if => proc { |attributes| attributes['balance'].blank? }

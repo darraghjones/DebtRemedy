@@ -8,7 +8,20 @@
 </head>
 <body>
 
-<div>Current client id = <%=current_client.id%></div>
+<div>Current client: <%=current_client.best_advice%></div>
+
+<ul class="nav">
+
+<li><%=link_to "About you", "about_you"%></li>
+<li><%=link_to "Income", "your_income"%></li>
+<li><%=link_to "Priority spending", "priority"%></li>
+<li><%=link_to "Other spending", "other_expenses"%></li>
+<li><%=link_to "Living costs", "living_expenses"%></li>
+<li><%=link_to "Assets", "assets"%></li>
+<li><%=link_to "Debts", "who_you_owe"%></li>
+<li><%=link_to "And finally", "last_not_least"%></li>
+<li><%=link_to "Recommendation", "recommendation"%></li>
+</ul>
 
 <%= yield %>
 

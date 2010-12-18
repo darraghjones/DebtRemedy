@@ -42,7 +42,11 @@ class SessionController < ApplicationController
   
   def your_income_submit
     if @client.update_attributes(params[:client])
-      redirect_to :action => :priority
+      if params[:commit] == "Next"
+        redirect_to :action => :priority
+      else
+        redirect_to :action => :logout
+      end
     else
       render :action => :your_income
     end
