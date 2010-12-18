@@ -1,2 +1,14 @@
 <h1>Session#new</h1>
-<p>Find me in app/views/session/new.html.erb</p>
+
+
+<p id="notice"><%= notice %></p>
+<%form_tag login_path do %>
+
+<%=label_tag :web_number, "Enter your web number"%>
+<%=text_field_tag :web_number %>
+
+<%=submit_tag "Login"%>
+
+<%end%>
+
+<%=link_to "Start", :action => :qaq %>

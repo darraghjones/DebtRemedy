@@ -14,11 +14,15 @@ require 'calculations'
 
 class Client < ActiveRecord::Base
   include Calculations
-  has_many :client_answers
-  has_many :client_debts
-  accepts_nested_attributes_for :client_debts, :reject_if => proc { |attributes| attributes['balance'].blank? }
+ 
+  has_many :client_answers, :dependent => :destroy
+  has_many :client_debts, :dependent => :destroy
+  accepts_nested_attributes_for :client_debts, :allow_destroy => true, :reject_if => proc { |attributes| attributes['balance'].blank? }
   
   DataItem.all.each do |item|
+  
+    validates_presence_of item.name
+
     define_method item.name do
       #a = answers.find_by_question_id(q.id)
       a = client_answers.select {|a| a.data_item_id == item.id}[0]

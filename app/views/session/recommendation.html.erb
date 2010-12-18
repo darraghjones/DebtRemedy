@@ -1,5 +1,9 @@
 <h1>Session#recommendation</h1>
 
+<%=link_to "PDF Booklet", :action => :remedy, :format => "pdf"%>
+
+<%=link_to "HTML Booklet", {:action => :remedy}, :target => "_blank"%>
+
 <%=link_to "Back", :action => :last_not_least%>
 <%=submit_tag "Save & exit" %>
 

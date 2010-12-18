@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 
-  before_filter :except => [:new, :create, :qaq, :qaq_submit, :web_number] do
+  before_filter :except => [:new, :create, :qaq, :qaq_submit] do
     @client = current_client
   end
 
@@ -8,21 +8,35 @@ class SessionController < ApplicationController
   end
 
   def create
+    @client = Client.find_by_web_number(params[:web_number])
+    if @client
+      current_client = @client
+      redirect_to :action => :welcome_back
+    else
+      redirect_to :action => :new, :notice => "Invalid"
+    end
   end
 
-  def update
+  def welcome_back
   end
+
 
   def qaq
+    @qaq = QuickAssessmentQuestions.new
   end
 
   def qaq_submit
-    redirect_to :action => :about_you
+    @qaq = QuickAssessmentQuestions.new(params[:quick_assessment_questions])
+    puts @qaq.to_yaml
+    if @qaq.valid?
+      redirect_to :action => :web_number
+    else
+      render :action => :qaq
+    end
   end
 
   def web_number
-    #@client.web_number = "W" + rand(10000).to_s
-    #current_client = @client
+    @client.web_number = "W" + rand(10000).to_s
   end
 
   def about_you
@@ -30,6 +44,7 @@ class SessionController < ApplicationController
 
   def about_you_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :your_income
     else
       render :action => :about_you
@@ -42,11 +57,8 @@ class SessionController < ApplicationController
   
   def your_income_submit
     if @client.update_attributes(params[:client])
-      if params[:commit] == "Next"
-        redirect_to :action => :priority
-      else
-        redirect_to :action => :logout
-      end
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
+      redirect_to :action => :priority
     else
       render :action => :your_income
     end
@@ -58,6 +70,7 @@ class SessionController < ApplicationController
 
    def priority_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :other_expenses
     else
       render :action => :priority
@@ -71,6 +84,7 @@ class SessionController < ApplicationController
 
     def other_expenses_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :living_expenses
     else
       render :action => :other_expenses
@@ -82,6 +96,7 @@ class SessionController < ApplicationController
 
   def living_expenses_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :assets
     else
       render :action => :living_expenses
@@ -93,6 +108,7 @@ class SessionController < ApplicationController
 
   def assets_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :who_you_owe
     else
       render :action => :assets
@@ -105,6 +121,7 @@ class SessionController < ApplicationController
 
   def who_you_owe_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :last_not_least
     else
       render :action => :who_you_owe
@@ -116,6 +133,7 @@ class SessionController < ApplicationController
 
   def last_not_least_submit
     if @client.update_attributes(params[:client])
+      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :please_wait
     else
       render :action => :last_not_least
@@ -134,14 +152,22 @@ class SessionController < ApplicationController
       format.html
       format.pdf do
         pdf = Prawn::Document.new
-        pdf.text("Prawn Rocks")
+        pdf.text("Recommendation goes here")
         send_data pdf.render, :filename => 'remedy.pdf', :type => 'application/pdf', :disposition => 'inline'
       end
     end
   end
 
   def email_booklet
-    Emailer.send_feedback.deliver 
+  end
+
+  def send_feedback
+    feedback = Feedback.new
+    feedback.content = params[:content]
+    feedback.name = params[:name]
+    logger.debug feedback.to_yaml
+    Emailer.send_feedback(feedback).deliver
+    render :text => "Thank you for your feedback"
   end
 
   def your_details

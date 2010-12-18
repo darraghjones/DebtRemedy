@@ -1,2 +1,15 @@
 <h1>Session#logout</h1>
 Thank you for using Debt Remedy
+
+
+
+<%form_tag(:action => :send_feedback) do %>
+
+<%=text_area_tag :content %>
+
+<%=label_tag :name, "Name"%>
+<%=text_field_tag :name %>
+
+<%=submit_tag "Send feedback"%>
+
+<%end%>
