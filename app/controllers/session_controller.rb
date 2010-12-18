@@ -130,9 +130,18 @@ class SessionController < ApplicationController
   end
 
   def remedy
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = Prawn::Document.new
+        pdf.text("Prawn Rocks")
+        send_data pdf.render, :filename => 'remedy.pdf', :type => 'application/pdf', :disposition => 'inline'
+      end
+    end
   end
 
   def email_booklet
+    Emailer.send_feedback.deliver 
   end
 
   def your_details
