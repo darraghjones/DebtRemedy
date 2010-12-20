@@ -2,8 +2,14 @@ class SessionController < ApplicationController
 
   before_filter :except => [:new, :create, :qaq, :qaq_submit] do
     @client = current_client
+    @sql = StringIO.new(flash[:sql] || '')
+    ActiveRecord::Base.logger = Logger.new(@sql) 
   end
-
+  
+  after_filter do
+    flash[:sql] = @sql.string if response.status == 302    
+  end
+  
   def new
   end
 
@@ -79,7 +85,7 @@ class SessionController < ApplicationController
   def priority
   end
 
-   def priority_submit
+  def priority_submit    
     class << @client
       validates_presence_of :mortgage_arrears, :if => Proc.new {|client| !client.mortgage.blank?}
     end

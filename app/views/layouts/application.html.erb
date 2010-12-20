@@ -38,5 +38,10 @@
 
 <%= yield %>
 
+
+<pre>
+<%=@sql.string unless @sql.nil?%>
+</pre>
+
 </body>
 </html>
