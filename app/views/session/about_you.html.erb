@@ -2,46 +2,50 @@
 
 
 <%form_for(@client, :url => {:action => :about_you}) do |f| %>
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-      <% @client.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
 
 
 <table>
 
 <tr><td></td><td>Who is your CCCS Debt Remedy for?</td>
 <td><%=f.select(:debt_remedy_for, [please_select,['Me', 0],['My partner and I',1]])%></td><td></td></tr>
-<tr><td></td><td>Besides you and your partner, how many additional adults share your home?</td>
-<td><%=f.select :num_adults, [['',nil]] + (0..9).map {|n| [n,n]} %></td><td></td></tr>
+<tr><td><%=info_icon('')%></td><td>Besides you and your partner, how many additional adults share your home?</td>
+<td><%=f.select :num_adults, [please_select] + (0..9).map {|n| [n,n]} %></td><td></td></tr>
 <tr><td></td><td>Is your partner aware of the financial situation?</td>
-<td><%=f.select :partner_aware, [please_select, ['Yes / not applicable', 0], ['No', 1]]%></td><td></td></tr>
+<td><%=f.select :partner_aware, [please_select, ['Yes', true], ['No', false]], {:selected => @partner_aware}%></td><td></td></tr>
 <tr><td></td><td>How many children aged under 18 live in your home?</td>
-<td><%=f.select :num_children, [['', nil]] + (0..12).map {|n| [n,n]}%></td><td></td></tr>
+<td><%=f.select :num_children, [please_select] + (0..12).map {|n| [n,n]}%></td><td></td></tr>
 <tr><td></td><td>Where in the United Kingdom do you live?</td>
 <td><%=f.select :where_in_uk, [please_select,['England / Wales', 'eng_wales'],['Scotland', 'scotland'], ['Northern Ireland','northern_ireland']]%></td><td></td></tr>
 <tr><td></td><td>What is your marital status?</td>
 <td><%=f.select :maritial_status, [please_select, ['Divorced / seperated','div_sep'], ['Single','single']]%></td><td></td></tr>
-<tr><td></td><td>How old are you?</td><td></td><td></td></tr>
-<tr><td></td><td>Are you male or female?</td><td></td><td></td></tr>
-<tr><td></td><td>What is your housing status?</td><td></td><td></td></tr>
-<tr><td></td><td>If you're renting, what type of tenancy agreement do you have?</td><td></td><td></td></tr>
-<tr><td></td><td>How many vehicles do you pay running costs and/or parking for?</td><td></td><td></td></tr>
-<tr><td></td><td>How many items do you have on hire purchase?</td><td></td><td></td></tr>
-<tr><td></td><td>Do you have any pets?</td><td></td><td></td></tr>
-<tr><td></td><td>Over the last 2 weeks, how often have you been bothered by any of the following problems:</td><td></td><td></td></tr>
-<tr><td></td><td>Little interest or pleasure in doing things?</td><td></td><td></td></tr>
-<tr><td></td><td>Feeling down, depressed or hopeless?</td><td></td><td></td></tr>
-<tr><td></td><td>Feeling nervous, anxious or on edge?</td><td></td><td></td></tr>
-<tr><td></td><td>Not being able to stop or control worrying?</td><td></td><td></td></tr>
+<tr><td></td><td>How old are you?</td><td>
+<%=f.select :age_range, [please_select, ['Under 25', 0.25],['25-39',25.39],['40-59',40.59],['Over 60', 60.99]]%>
+</td><td></td></tr>
+<tr><td><%=info_icon('')%></td><td>Are you male or female?</td><td>
+<%=f.label("gender_male", "Male") %>
+<%=f.radio_button(:gender, 'male') %>
+<%=f.label("gender_female", "Female") %>
+<%=f.radio_button(:gender, 'female')%>
+</td><td></td></tr>
+<tr><td></td><td>What is your housing status?</td><td>
+<%=f.select :housing_status, [please_select,['Mortgage','mortgage'],['Rent','rent'],['Board Payment','board'],['Own Outright','own'],['Rent & mortgage','rent_mortgage']]%>
+</td><td></td></tr>
+<tr><td></td><td>If you're renting, what type of tenancy agreement do you have?</td><td>
+<%=f.select :rent_type, [please_select, ['Local authority', 'local'],['Housing association', 'housing'],['Private landlord','private_landlord']]%>
+</td><td></td></tr>
+<tr><td></td><td>How many vehicles do you pay running costs and/or parking for?</td><td>
+<%=f.select :num_vehicals, [please_select] + (0..9).map {|n| [n,n]} %>
+</td><td></td></tr>
+<tr><td><%=info_icon('')%></td><td>How many items do you have on hire purchase?</td><td>
+<%=f.select :num_hp, [please_select] + (0..12).map {|n| [n,n]} %></td><td></td></tr>
+<tr><td></td><td>Do you have any pets?</td><td>
+<%=f.yes_no_radio_buttons :any_pets%>
+</td><td></td></tr>
+<tr><td><%=info_icon('')%></td><td>Over the last 2 weeks, how often have you been bothered by any of the following problems:</td><td></td><td></td></tr>
+<tr><td></td><td>Little interest or pleasure in doing things?</td><td><%=f.depression_dropdown :lost_interest%></td><td></td></tr>
+<tr><td></td><td>Feeling down, depressed or hopeless?</td><td><%=f.depression_dropdown :feeling_down%></td><td></td></tr>
+<tr><td></td><td>Feeling nervous, anxious or on edge?</td><td><%=f.depression_dropdown :feeling_nervous%></td><td></td></tr>
+<tr><td></td><td>Not being able to stop or control worrying?</td><td><%=f.depression_dropdown :worrying%></td><td></td></tr>
 
 </table>
 

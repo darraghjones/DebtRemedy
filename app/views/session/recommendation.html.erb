@@ -1,5 +1,29 @@
 <h1>Session#recommendation</h1>
 
+
+
+<h3>Client calculations</h3>
+<table>
+<tr><th>Calculation</th><th>Value</th></tr>
+<tr><td>Total debts</td><td></td></tr>
+</table>
+
+<h3>Client debts</h3>
+<table>
+<tr><th>Debts</th><th>Value</th></tr>
+<%@client.client_debts.each do |d| %>
+<tr><td><%=d.creditor%></td><td><%=d.balance%></td></tr>
+<%end%>
+</table>
+
+<h3>Client answers</h3>
+<table>
+<tr><th>Data item</th><th>Value</th></tr>
+<%@client.client_answers.each do |a| %>
+<tr><td><%=a.data_item.name%></td><td><%=a.value%></td></tr>
+<%end%>
+</table>
+
 <%=link_to "PDF Booklet", :action => :remedy, :format => "pdf"%>
 
 <%=link_to "HTML Booklet", {:action => :remedy}, :target => "_blank"%>

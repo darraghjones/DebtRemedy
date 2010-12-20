@@ -1,4 +1,5 @@
 require 'calculations'
+require 'mixology'
 
 # == Schema Information
 # Schema version: 20101217214815
@@ -15,27 +16,39 @@ require 'calculations'
 class Client < ActiveRecord::Base
   include Calculations
  
-  has_many :client_answers, :dependent => :destroy
+  has_many :client_answers, :dependent => :destroy, :include => :data_item
   has_many :client_debts, :dependent => :destroy
-  accepts_nested_attributes_for :client_debts, :allow_destroy => true, :reject_if => proc { |attributes| attributes['balance'].blank? }
+  accepts_nested_attributes_for :client_debts, :allow_destroy => true, 
+    #:reject_if => proc {|attributes| attributes.any? {|a| a.blank?}}
+    #:reject_if => :debt_is_not_valid
+    :reject_if => :mostly_blank
+
+  def mostly_blank(attributes)
+    attributes['creditor'].blank? && attributes['debt_type'].blank? && attributes['balance'].blank? && attributes['owner'].blank?
+  end
+  
   
   DataItem.all.each do |item|
   
-    validates_presence_of item.name
-
     define_method item.name do
       #a = answers.find_by_question_id(q.id)
       a = client_answers.select {|a| a.data_item_id == item.id}[0]
-      a && a.value || item.default_value
+      if a.nil? 
+        item.default_value
+      else
+        a.value
+      end
     end
     define_method "#{item.name}=" do |value|
       #a = answers.find_by_question_id(q.id) || answers.new({:question_id => q.id})
       a = client_answers.select {|a| a.data_item_id == item.id}[0] 
-      if a
+      if a.nil?
+        a = client_answers.new(:data_item_id => item.id)
         a.value = value
-        a.save
-      else
-        client_answers << client_answers.new(:data_item_id => item.id, :value  => value)
+        client_answers << a
+      else 
+        a.value = value
+        a.save        
       end
     end
   end

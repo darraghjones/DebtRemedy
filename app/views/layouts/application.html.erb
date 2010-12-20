@@ -9,7 +9,7 @@
 <body>
 
 <h1><%=link_to "Start", :action => :new%></h1>
-<div>Current client: <%=current_client.best_advice%></div>
+<div>Current client: <%=current_client.web_number%></div>
 
 <ul class="nav">
 
@@ -23,6 +23,18 @@
 <li><%=link_to "And finally", "last_not_least"%></li>
 <li><%=link_to "Recommendation", "recommendation"%></li>
 </ul>
+
+  <% if @client && @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <%= yield %>
 

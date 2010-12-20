@@ -8,6 +8,30 @@
 <tr><td></td><td>Food, toiletries, cleaning</td>
 <td><%=f.text_field :food_etc%></td></tr>
 
+<tr><td></td><td>Clothing and footwear</td>
+<td><%=f.text_field :clothing%></td></tr>
+
+<tr><td></td><td>Telephone, mobile and Internet</td>
+<td><%=f.text_field :telephone%></td></tr>
+
+<tr><td></td><td>Medicines/prescriptions</td>
+<td><%=f.text_field :medicines%></td></tr>
+
+<tr><td></td><td>Dentist/opticians</td>
+<td><%=f.text_field :dentist%></td></tr>
+
+<tr><td></td><td>Hairdressing</td>
+<td><%=f.text_field :hairdressing%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Sundries/emergencies</td>
+<td><%=f.text_field :sundries%></td></tr
+
+<tr><td></td><td>Sports, hobbies and entertainment</td>
+<td><%=f.text_field :sports%></td></tr>
+
+
+
+
 </table>
 <%=link_to "Back", :action => :other_expenses%>
 <%=submit_tag "Save & exit" %>

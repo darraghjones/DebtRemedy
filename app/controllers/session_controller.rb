@@ -27,12 +27,15 @@ class SessionController < ApplicationController
 
   def qaq_submit
     @qaq = QuickAssessmentQuestions.new(params[:quick_assessment_questions])
-    puts @qaq.to_yaml
     if @qaq.valid?
+      if @qaq.q_8 then return redirect_to :action => :self_employed end
       redirect_to :action => :web_number
     else
       render :action => :qaq
     end
+  end
+
+  def self_employed
   end
 
   def web_number
@@ -40,9 +43,14 @@ class SessionController < ApplicationController
   end
 
   def about_you
+    @partner_aware = @client.partner_aware ? "true" : "false"
   end
 
   def about_you_submit
+    class << @client
+      validates_presence_of [:debt_remedy_for, :num_adults, :num_children, :where_in_uk, :maritial_status, :gender]
+      #validates_inclusion_of :partner_aware, :in => [true, false]
+    end
     if @client.update_attributes(params[:client])
       return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :your_income
@@ -56,6 +64,9 @@ class SessionController < ApplicationController
   end
   
   def your_income_submit
+    class << @client
+      validates_numericality_of [:take_home_pay], :unless => lambda { |client| client.take_home_pay.nil?}
+    end
     if @client.update_attributes(params[:client])
       return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :priority
@@ -69,6 +80,9 @@ class SessionController < ApplicationController
   end
 
    def priority_submit
+    class << @client
+      validates_presence_of :mortgage_arrears, :if => Proc.new {|client| !client.mortgage.blank?}
+    end
     if @client.update_attributes(params[:client])
       return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :other_expenses
@@ -124,11 +138,13 @@ class SessionController < ApplicationController
       return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :last_not_least
     else
+      #(6 - @client.client_debts.count).times {@client.client_debts.build}
       render :action => :who_you_owe
     end
   end
 
   def last_not_least
+    logger.debug @client.institute_of_chartered_accountants_in_england_and_wales ? "yes" : "no"
   end
 
   def last_not_least_submit
@@ -151,12 +167,10 @@ class SessionController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = Prawn::Document.new
-        pdf.text("Recommendation goes here")
-        send_data pdf.render, :filename => 'remedy.pdf', :type => 'application/pdf', :disposition => 'inline'
+        render :pdf => "remedy.pdf", :stylesheets => ["application", "prince"], :layout => "pdf"
       end
     end
-  end
+ end
 
   def email_booklet
   end

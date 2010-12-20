@@ -1,4 +1,5 @@
 DebtRemedy::Application.routes.draw do
+  root :to => redirect("/session/new")
   get "session/new"
 
   post "session/new", :to => "session#create", :as => "login"
@@ -8,6 +9,7 @@ DebtRemedy::Application.routes.draw do
   get "session/qaq"
   post "session/qaq", :to => "session#qaq_submit"
 
+  get "session/self_employed"
   get "session/web_number"
 
   get "session/about_you"

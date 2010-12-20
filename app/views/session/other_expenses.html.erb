@@ -4,9 +4,64 @@
 
 <table>
 <tr><th>&nbsp;</th><th>&nbsp;</th><th>Amount</th><th>How often</th></tr>
-<tr><td></td><td>Building and contents insurance</td>
-<td><%=f.text_field :building_insurance%></td>
+
+<tr><td><%=info_icon''%></td><td>Building and contents insurance</td>
+<td><%=f.currency_field :building_insurance%></td>
 <td><%=f.frequency_select :building_insurance%></td></tr>
+
+<tr><td><%=info_icon''%></td><td>Life insurance/pension</td>
+<td><%=f.currency_field :life_insurance%></td>
+<td><%=f.frequency_select :life_insurance%></td></tr>
+
+<tr><td><%=info_icon''%></td><td>Medical/accident insurance</td>
+<td><%=f.currency_field :accident_insurance%></td>
+<td><%=f.frequency_select :accident_insurance%></td></tr>
+
+<tr><td></td><td>Public transport</td>
+<td><%=f.currency_field :public_transport%></td>
+<td><%=f.frequency_select :public_transport%></td></tr>
+
+<tr><td><%=info_icon''%></td><td>Household appliance rentale</td>
+<td><%=f.currency_field :appliance_rentale%></td>
+<td><%=f.frequency_select :appliance_rentale%></td></tr>
+
+<tr><td></td><td>Satellite</td>
+<td><%=f.currency_field :satellite%></td>
+<td><%=f.frequency_select :satellite%></td></tr>
+
+<tr><td></td><td>Union/professional fees</td>
+<td><%=f.currency_field :professional_fees%></td>
+<td><%=f.frequency_select :professional_fees%></td></tr>
+
+<tr><td></td><td>Education fees</td>
+<td><%=f.currency_field :education_fees%></td>
+<td><%=f.frequency_select :education_fees%></td></tr>
+
+<tr><td></td><td>Church/charity donations</td>
+<td><%=f.currency_field :charity_donations%></td>
+<td><%=f.frequency_select :charity_donations%></td></tr>
+
+<tr><td></td><td>Newspapers/magazines</td>
+<td><%=f.currency_field :magazines%></td>
+<td><%=f.frequency_select :magazines%></td></tr>
+
+<tr><td></td><td>Laundry/dry cleaning</td>
+<td><%=f.currency_field :dry_cleaning%></td>
+<td><%=f.frequency_select :dry_cleaning%></td></tr>
+
+<tr><td></td><td>Tobacco</td>
+<td><%=f.currency_field :tobacco%></td>
+<td><%=f.frequency_select :tobacco%></td></tr>
+
+<tr><td><%=info_icon''%></td><td>Repairs and maintenance</td>
+<td><%=f.currency_field :maintenance%></td>
+<td><%=f.frequency_select :maintenance%></td></tr>
+
+<tr><td><%=info_icon''%></td><td>Loan from family or friends</td>
+<td><%=f.currency_field :family_loans%></td>
+<td><%=f.frequency_select :family_loans%></td></tr>
+
+
 
 </table>
 <%=link_to "Back", :action => :priority%>

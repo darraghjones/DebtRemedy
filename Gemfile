@@ -9,6 +9,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'prawn'
+gem 'prawnto'
+gem 'mixology'
 
 group :development do
   gem 'annotate-models'

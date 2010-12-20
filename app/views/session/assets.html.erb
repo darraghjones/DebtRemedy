@@ -7,9 +7,20 @@
 
 <table>
 
+<% if @client.housing_status  == 'rent' %>
+
 <tr><td></td><td>Who owns the property?</td>
 <td><%=f.select :property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
-<table>
+
+<tr><td></td><td>What is the estimated market value of the property?</td>
+<td><%=f.text_field :property_value%></td></tr>
+
+<tr><td></td><td>How much is outstanding on the mortgage?</td>
+<td><%=f.text_field :property_value%></td></tr>
+
+</table>
+
+<%end%>
 
 <h3>Other property</h3>
 
@@ -20,10 +31,27 @@
 <tr><td></td><td>Who owns the other property?</td>
 <td><%=f.select :other_property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
 
+
+<tr><td></td><td>What is the estimated market value of the other property?</td>
+<td><%=f.text_field :property_value%></td></tr>
+
+<tr><td></td><td>How much is outstanding on the mortgage on the other property?</td>
+<td><%=f.text_field :property_value%></td></tr>
+
+</table>
+<h3>Other assets</h3>
+<table>
+
+<tr><td></td><td>What is the total value of any savings/investments you have?</td><td><%=f.text_field :property_value%></td></tr>
+<tr><td></td><td>Who owns the savings or investments?</td><td><%=f.select :property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
+<tr><td></td><td>What is the total worth of any other valuable items?</td><td><%=f.text_field :property_value%></td></tr>
+<tr><td></td><td>Who owns these items?</td><td><%=f.select :property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]%></td></tr>
+<tr><td><%=info_icon('')%></td><td>Amount of any cash lump sum due in the next 12 months</td><td><%=f.text_field :property_value%></td></tr>
+
 </table>
 
 
-<h3>Other assets</h3>
+
 
 <%=link_to "Back", :action => :living_expenses%>
 <%=submit_tag "Save & exit" %>

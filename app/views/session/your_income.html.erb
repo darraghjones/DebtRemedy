@@ -6,9 +6,45 @@
 
 <table>
 <tr><th>&nbsp;</th><th>&nbsp;</th><th>Amount</th><th>How often</th></tr>
-<tr><td></td><td>Your take home pay</td>
+<tr><td><%=info_icon('')%></td><td>Your take home pay</td>
 <td><%=f.text_field :take_home_pay%></td>
 <td><%=f.frequency_select :take_home_pay%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Your partner's take home pay</td>
+<td><%=f.text_field :partner_take_home_pay%></td>
+<td><%=f.frequency_select :partner_take_home_pay%></td></tr>
+
+<tr><td></td><td>Rent/board received</td>
+<td><%=f.text_field :rent_received%></td>
+<td><%=f.frequency_select :rent_received%></td></tr>
+
+<tr><td></td><td>Pension received</td>
+<td><%=f.text_field :pension_received%></td>
+<td><%=f.frequency_select :pension_received%></td></tr>
+
+<tr><td></td><td>Income Support</td>
+<td><%=f.text_field :income_support%></td>
+<td><%=f.frequency_select :income_support%></td></tr>
+
+<tr><td></td><td>Jobseekers Allowance</td>
+<td><%=f.text_field :jobseekers_allowance%></td>
+<td><%=f.frequency_select :jobseekers_allowance%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Incapacity Benefit/ESA</td>
+<td><%=f.text_field :incapacity_benefit%></td>
+<td><%=f.frequency_select :incapacity_benefit%></td></tr>
+
+<tr><td></td><td>Disability Living Allowance</td>
+<td><%=f.text_field :disability_living_allowance%></td>
+<td><%=f.frequency_select :disability_living_allowance%></td></tr>
+
+<tr><td></td><td>Working Tax Credit</td>
+<td><%=f.text_field :working_tax_credit%></td>
+<td><%=f.frequency_select :working_tax_credit%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Any other income received</td>
+<td><%=f.text_field :any_other_income%></td>
+<td><%=f.frequency_select :any_other_income%></td></tr>
 
 </table>
 

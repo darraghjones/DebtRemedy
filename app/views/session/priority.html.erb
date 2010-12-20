@@ -10,6 +10,60 @@
 <td><%=f.frequency_select :mortgage%></td>
 <td><%=f.yes_no_radio_buttons :mortgage_arrears%></td></tr>
 
+<tr><td><%=info_icon('')%></td><td>Secured loans/2nd mortgage</td><td><%=f.text_field :secured_loans%></td>
+<td><%=f.frequency_select :secured_loans%></td>
+<td><%=f.yes_no_radio_buttons :secured_loans_arrears%></td></tr>
+
+
+<tr><td></td><td>Mortgage endowment premium</td><td><%=f.text_field :mortgage_endowment%></td>
+<td><%=f.frequency_select :mortgage_endowment%></td>
+<td><%=f.yes_no_radio_buttons :mortgage_endowment_arrears%></td></tr>
+
+
+<tr><td></td><td>Service charge/ground rent</td><td><%=f.text_field :service_charge%></td>
+<td><%=f.frequency_select :service_charge%></td>
+<td><%=f.yes_no_radio_buttons :service_charge_arrears%></td></tr>
+
+
+<tr><td></td><td>Council tax</td><td><%=f.text_field :council_tax%></td>
+<td><%=f.frequency_select :council_tax%></td>
+<td><%=f.yes_no_radio_buttons :council_tax_arrears%></td></tr>
+
+
+<tr><td><%=info_icon('')%></td><td>TV Licence</td><td><%=f.text_field :tv_license%></td>
+<td><%=f.frequency_select :tv_license%></td>
+<td><%=f.yes_no_radio_buttons :tv_license_arrears%></td></tr>
+
+
+<tr><td></td><td>Water</td><td><%=f.text_field :water%></td>
+<td><%=f.frequency_select :water%></td>
+<td><%=f.yes_no_radio_buttons :water_arrears%></td></tr>
+
+
+<tr><td></td><td>Electricity</td><td><%=f.text_field :electricity%></td>
+<td><%=f.frequency_select :electricity%></td>
+<td><%=f.yes_no_radio_buttons :electricity_arrears%></td></tr>
+
+<tr><td></td><td>Gas</td><td><%=f.text_field :mortgage%></td>
+<td><%=f.frequency_select :gas%></td>
+<td><%=f.yes_no_radio_buttons :gas_arrears%></td></tr>
+
+<tr><td></td><td>Other household fuel</td><td><%=f.text_field :household_fuel%></td>
+<td><%=f.frequency_select :household_fuel%></td>
+<td><%=f.yes_no_radio_buttons :household_fuel_arrears%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Magistrates fines</td><td><%=f.text_field :mag_fines%></td>
+<td><%=f.frequency_select :mag_fines%></td>
+<td><%=f.yes_no_radio_buttons :mag_fines_arrears%></td></tr>
+
+<tr><td></td><td>MCCJs/decrees</td><td><%=f.text_field :mccj_degrees%></td>
+<td><%=f.frequency_select :mccj_degrees%></td>
+<td><%=f.yes_no_radio_buttons :mccj_degrees_arrears%></td></tr>
+
+<tr><td><%=info_icon('')%></td><td>Child maintenance</td><td><%=f.text_field :child_maintenance%></td>
+<td><%=f.frequency_select :maintenance%></td>
+<td><%=f.yes_no_radio_buttons :child_maintenance_arrears%></td></tr>
+
 </table>
 
 <%=link_to "Back", :action => :your_income%>

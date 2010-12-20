@@ -45,6 +45,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mixology (0.2.0)
     polyglot (0.3.1)
     prawn (0.8.4)
       prawn-core (>= 0.8.4, < 0.9)
@@ -53,6 +54,9 @@ GEM
     prawn-core (0.8.4)
     prawn-layout (0.8.4)
     prawn-security (0.8.4)
+    prawnto (0.0.4)
+      prawn
+      rails (>= 2.1)
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
@@ -85,6 +89,8 @@ DEPENDENCIES
   annotate-models
   haml
   jquery-rails (>= 0.2.6)
+  mixology
   prawn
+  prawnto
   rails (= 3.0.1)
   sqlite3-ruby

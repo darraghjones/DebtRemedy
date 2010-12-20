@@ -14,7 +14,7 @@
   <tr>
     <td><%= client_answer.value %></td>
     <td><%= client_answer.client_id %></td>
-    <td><%= client_answer.data_item_id %></td>
+    <td><%= client_answer.data_item.name %></td>
     <td><%= link_to 'Show', client_answer %></td>
     <td><%= link_to 'Edit', edit_client_answer_path(client_answer) %></td>
     <td><%= link_to 'Destroy', client_answer, :confirm => 'Are you sure?', :method => :delete %></td>

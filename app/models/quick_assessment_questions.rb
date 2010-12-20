@@ -9,6 +9,7 @@ class QuickAssessmentQuestions
   end
 
   def initialize(attributes = {})
+    attributes ||= {}
     attributes.each do |name, value|
       send("#{name}=", value)
     end

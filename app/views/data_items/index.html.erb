@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Default value</th>
+    <th>Data type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= data_item.name %></td>
     <td><%= data_item.default_value %></td>
+    <td><%= data_item.data_type %></td>
     <td><%= link_to 'Show', data_item %></td>
     <td><%= link_to 'Edit', edit_data_item_path(data_item) %></td>
     <td><%= link_to 'Destroy', data_item, :confirm => 'Are you sure?', :method => :delete %></td>
