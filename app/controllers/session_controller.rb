@@ -170,7 +170,7 @@ class SessionController < ApplicationController
   end
 
   def recommendation
-   @client.client_answers.each {|a| a.mixin TypeCasting}
+    #@client.client_answers.each {|a| a.mixin TypeCasting}
   end
 
   def remedy
