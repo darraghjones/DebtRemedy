@@ -1,12 +1,5 @@
 module TypeCasting
 
-  def value
-    val = read_attribute :value
-    Convert(val, data_item.data_type)
-  end
-end
-
-module Kernel
   def Boolean(val, nil_value = nil)
     return nil_value if val.nil?
     return true if val == true || val == 1 || val == "1" 
@@ -27,3 +20,5 @@ module Kernel
   end
   
 end
+
+

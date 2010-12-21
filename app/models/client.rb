@@ -13,7 +13,7 @@ require 'calculations'
 #
 
 class Client < ActiveRecord::Base
-  include Calculations
+  #include Calculations
   
   validates_presence_of [:debt_remedy_for, :num_adults, :partner_aware, :num_children, :where_in_uk, :maritial_status, :gender, :age_range, :housing_status, :num_vehicals, :num_hp, :any_pets, :lost_interest, :feeling_down, :feeling_nervous, :worrying ]
   validates_presence_of :rent_type, :if => lambda {|client| client.housing_status == "rent"}
@@ -49,6 +49,7 @@ class Client < ActiveRecord::Base
         a.value
       end
     end
+    
     define_method "#{item.name}=" do |value|
       #a = answers.find_by_question_id(q.id) || answers.new({:question_id => q.id})
       a = client_answers.select {|a| a.data_item_id == item.id}[0] 

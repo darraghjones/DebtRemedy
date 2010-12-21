@@ -1,7 +1,9 @@
 body {background-color:#eaeaea}
 
-.container {background-color:#fff;min-height: 600px;}
+.container {background-color:#fff;min-height: 600px; padding:20px;}
 
+select {width:180px;}
+input[type='text'] {width:100px;}
 
 ul.nav {height:20px;}
 ul.nav li {display:inline;padding-right:5px;}

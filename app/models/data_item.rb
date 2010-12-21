@@ -15,14 +15,4 @@ class DataItem < ActiveRecord::Base
   validates_presence_of :name
   validates_inclusion_of :data_type, :in => ['int', 'float', 'bool', 'string']
   
-  def default_value
-    val = read_attribute :default_value
-    @default_value = Convert(val, data_type)
-  end
-
-  def default_value=(val)    
-    @default_value = Convert(val, data_type)
-    write_attribute :default_value, @default_value.to_s
-  end  
-  
 end
