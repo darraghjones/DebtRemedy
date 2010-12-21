@@ -1,5 +1,4 @@
 require 'calculations'
-require 'mixology'
 
 # == Schema Information
 # Schema version: 20101217214815

@@ -14,6 +14,7 @@ require 'type_casting'
 #
 
 class ClientAnswer < ActiveRecord::Base
+  #include TypeCasting
   
   belongs_to :client
   belongs_to :data_item

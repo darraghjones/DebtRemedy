@@ -9,7 +9,7 @@ class SessionController < ApplicationController
     @sql = StringIO.new(flash[:sql] || '')
     ActiveRecord::Base.logger = Logger.new(@sql) 
     if params[:commit] == "Save & exit"
-      @client.update_attributes(params[:client])
+      @client.attributes = params[:client]
       @client.save(false)
       redirect_to :action => :logout
       return false
@@ -170,6 +170,7 @@ class SessionController < ApplicationController
   end
 
   def recommendation
+   @client.client_answers.each {|a| a.mixin TypeCasting}
   end
 
   def remedy
