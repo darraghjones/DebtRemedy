@@ -1,7 +1,7 @@
 <h2>Quick assessment questions</h2>
 <%form_for @qaq, :url => {:action => :qaq} do |f| %>
 
-<table>
+<table id="qaq">
 
 <tr><td style="width:500px">Have you recently received a County Court claim form or Sheriff Court citation, which you have not yet responded to?</td>
 <td style="width:300px"><%=f.yes_no_radio_buttons(:q_1)%></td><td></td></tr>
