@@ -1,0 +1,81 @@
+%h2 Other spending
+- form_for(@client, :url => {:action => :other_expenses}) do |f|
+  %table
+    %tr
+      %th &nbsp;
+      %th &nbsp;
+      %th Amount
+      %th How often
+    %tr
+      %td= info_icon''
+      %td Building and contents insurance
+      %td= f.currency_field :building_insurance
+      %td= f.frequency_select :building_insurance
+    %tr
+      %td= info_icon''
+      %td Life insurance/pension
+      %td= f.currency_field :life_insurance
+      %td= f.frequency_select :life_insurance
+    %tr
+      %td= info_icon''
+      %td Medical/accident insurance
+      %td= f.currency_field :accident_insurance
+      %td= f.frequency_select :accident_insurance
+    %tr
+      %td
+      %td Public transport
+      %td= f.currency_field :public_transport
+      %td= f.frequency_select :public_transport
+    %tr
+      %td= info_icon''
+      %td Household appliance rentale
+      %td= f.currency_field :appliance_rentale
+      %td= f.frequency_select :appliance_rentale
+    %tr
+      %td
+      %td Satellite
+      %td= f.currency_field :satellite
+      %td= f.frequency_select :satellite
+    %tr
+      %td
+      %td Union/professional fees
+      %td= f.currency_field :professional_fees
+      %td= f.frequency_select :professional_fees
+    %tr
+      %td
+      %td Education fees
+      %td= f.currency_field :education_fees
+      %td= f.frequency_select :education_fees
+    %tr
+      %td
+      %td Church/charity donations
+      %td= f.currency_field :charity_donations
+      %td= f.frequency_select :charity_donations
+    %tr
+      %td
+      %td Newspapers/magazines
+      %td= f.currency_field :magazines
+      %td= f.frequency_select :magazines
+    %tr
+      %td
+      %td Laundry/dry cleaning
+      %td= f.currency_field :dry_cleaning
+      %td= f.frequency_select :dry_cleaning
+    %tr
+      %td
+      %td Tobacco
+      %td= f.currency_field :tobacco
+      %td= f.frequency_select :tobacco
+    %tr
+      %td= info_icon''
+      %td Repairs and maintenance
+      %td= f.currency_field :maintenance
+      %td= f.frequency_select :maintenance
+    %tr
+      %td= info_icon''
+      %td Loan from family or friends
+      %td= f.currency_field :family_loans
+      %td= f.frequency_select :family_loans
+  = link_to "Back", :action => :priority
+  = submit_tag "Save & exit"
+  = submit_tag "Next"

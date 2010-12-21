@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %b Web number:
+  = @client.web_number
+%p
+  %b Last login:
+  = @client.last_login
+= link_to 'Edit', edit_client_path(@client)
+|
+\#{link_to 'Back', clients_path}

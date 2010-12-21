@@ -1,0 +1,23 @@
+= form_for(@client_answer) do |f|
+  - if @client_answer.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@client_answer.errors.count, "error")
+        prohibited this client_answer from being saved:
+      %ul
+        - @client_answer.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :value
+    %br/
+    = f.text_field :value
+  .field
+    = f.label :client_id
+    %br/
+    = f.text_field :client_id
+  .field
+    = f.label :data_item_id
+    %br/
+    = f.text_field :data_item_id
+  .actions
+    = f.submit

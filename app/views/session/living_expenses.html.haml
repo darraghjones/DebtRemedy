@@ -1,0 +1,43 @@
+%h2 Living costs
+- form_for(@client, :url => {:action => :living_expenses}) do |f|
+  %table
+    %tr
+      %th &nbsp;
+      %th &nbsp;
+      %th Monthly amount
+    %tr
+      %td
+      %td Food, toiletries, cleaning
+      %td= f.text_field :food_etc
+    %tr
+      %td
+      %td Clothing and footwear
+      %td= f.text_field :clothing
+    %tr
+      %td
+      %td Telephone, mobile and Internet
+      %td= f.text_field :telephone
+    %tr
+      %td
+      %td Medicines/prescriptions
+      %td= f.text_field :medicines
+    %tr
+      %td
+      %td Dentist/opticians
+      %td= f.text_field :dentist
+    %tr
+      %td
+      %td Hairdressing
+      %td= f.text_field :hairdressing
+    %tr
+      %td= info_icon('')
+      %td Sundries/emergencies
+      = succeed "</tr" do
+        %td= f.text_field :sundries
+    %tr
+      %td
+      %td Sports, hobbies and entertainment
+      %td= f.text_field :sports
+  = link_to "Back", :action => :other_expenses
+  = submit_tag "Save & exit"
+  = submit_tag "Next"

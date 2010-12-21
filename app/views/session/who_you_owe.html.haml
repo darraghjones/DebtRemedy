@@ -1,0 +1,23 @@
+%h2 Debts
+- form_for(@client, :url => {:action => :who_you_owe}) do |f|
+  %table
+    %tr
+      %th Creditor name
+      %th Debt type
+      %th Owner of debt
+      %th Outstanding balance
+      %th Contratual payment
+    - f.fields_for :client_debts do |f2|
+      %tr.debt
+        %td= f2.text_field :creditor
+        %td= f2.text_field :debt_type
+        %td= f2.text_field :owner
+        %td= f2.text_field :balance
+        %td
+          = f2.check_box :_destroy, :class => "delete_debt_check_box"
+          = f2.label :_destroy, "Delete?", :class => "delete_debt_label"
+          %a.delete_debt_link{:href => "#", :style => "display:none"} Delete?
+  %table
+    = link_to "Back", :action => :assets
+    = submit_tag "Save & exit"
+    = submit_tag "Next"

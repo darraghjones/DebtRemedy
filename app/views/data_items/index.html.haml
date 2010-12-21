@@ -1,0 +1,19 @@
+%h1 Listing data_items
+%table
+  %tr
+    %th Name
+    %th Default value
+    %th Data type
+    %th
+    %th
+    %th
+  - @data_items.each do |data_item|
+    %tr
+      %td= data_item.name
+      %td= data_item.default_value
+      %td= data_item.data_type
+      %td= link_to 'Show', data_item
+      %td= link_to 'Edit', edit_data_item_path(data_item)
+      %td= link_to 'Destroy', data_item, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Data item', new_data_item_path

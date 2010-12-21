@@ -1,0 +1,36 @@
+%h2 And finally
+- form_for(@client, :url => {:action => :last_not_least}) do |f|
+  %table
+    %tr
+      %td= f.label :institute_of_chartered_accountants_in_england_and_wales, "Institute of Chartered Accountants in England and Wales"
+      %td= f.check_box :institute_of_chartered_accountants_in_england_and_wales
+    %tr
+      %td= f.label :chartered_institute_of_management_accountants, "Chartered Institute of Management Accountants"
+      %td= f.check_box :chartered_institute_of_management_accountants
+    %tr
+      %td= f.label :institute_of_company_accountants, "Institute of Company Accountants"
+      %td= f.check_box :institute_of_company_accountants
+    %tr
+      %td= f.label :law_society, "Law Society"
+      %td= f.check_box :law_society
+    %tr
+      %td= f.label :institute_of_legal_executives, "Institute of Legal Executives"
+      %td= f.check_box :institute_of_legal_executives
+    %tr
+      %td= f.label :house_of_commons, "House of Commons"
+      %td= f.check_box :house_of_commons
+    %tr
+      %td= f.label :house_of_lords, "House of Lords"
+      %td= f.check_box :house_of_lords
+    %tr
+      %td= f.label :local_authority, "Local Authority"
+      %td= f.check_box :local_authority
+    %tr
+      %td= f.label :national_association_of_estate_agents, "National Association of Estate Agents"
+      %td= f.check_box :national_association_of_estate_agents
+    %tr
+      %td= f.label :insolvency_practitioners_association, "Insolvency Practitioners Association"
+      %td= f.check_box :insolvency_practitioners_association
+  = link_to "Back", :action => :who_you_owe
+  = submit_tag "Save & exit"
+  = submit_tag "Next"
