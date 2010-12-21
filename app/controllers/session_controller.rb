@@ -5,9 +5,15 @@ class SessionController < ApplicationController
     if @client.nil? 
       redirect_to :action => :new
       return false
-    end
+    end    
     @sql = StringIO.new(flash[:sql] || '')
     ActiveRecord::Base.logger = Logger.new(@sql) 
+    if params[:commit] == "Save & exit"
+      @client.update_attributes(params[:client])
+      @client.save(false)
+      redirect_to :action => :logout
+      return false
+    end
   end
   
   after_filter do
@@ -61,7 +67,6 @@ class SessionController < ApplicationController
 
   def about_you_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :your_income
     else
       render :action => :about_you
@@ -74,7 +79,6 @@ class SessionController < ApplicationController
   
   def your_income_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :priority
     else
       render :action => :your_income
@@ -87,7 +91,6 @@ class SessionController < ApplicationController
 
   def priority_submit    
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :other_expenses
     else
       render :action => :priority
@@ -101,7 +104,6 @@ class SessionController < ApplicationController
 
   def other_expenses_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :living_expenses
     else
       render :action => :other_expenses
@@ -113,7 +115,6 @@ class SessionController < ApplicationController
 
   def living_expenses_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :assets
     else
       render :action => :living_expenses
@@ -133,7 +134,6 @@ class SessionController < ApplicationController
     end
     
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :who_you_owe
     else
       render :action => :assets
@@ -146,7 +146,6 @@ class SessionController < ApplicationController
 
   def who_you_owe_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :last_not_least
     else
       #(6 - @client.client_debts.count).times {@client.client_debts.build}
@@ -160,7 +159,6 @@ class SessionController < ApplicationController
 
   def last_not_least_submit
     if @client.update_attributes(params[:client])
-      return redirect_to :action => :logout if params[:commit] == "Save & exit"
       redirect_to :action => :please_wait
     else
       render :action => :last_not_least
