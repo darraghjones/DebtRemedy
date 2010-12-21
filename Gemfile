@@ -11,6 +11,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'prawn'
 gem 'prawnto'
 gem 'mixology'
+gem 'dynamic_form'
 
 group :development do
   gem 'annotate-models'

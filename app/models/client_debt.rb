@@ -16,5 +16,6 @@
 class ClientDebt < ActiveRecord::Base
   belongs_to :client
   validates_presence_of [:creditor, :debt_type, :owner, :balance]
+  validates_numericality_of [:balance]
 
 end

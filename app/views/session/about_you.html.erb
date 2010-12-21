@@ -1,4 +1,4 @@
-<h1>Session#about_you</h1>
+<h2>About you</h2>
 
 
 <%form_for(@client, :url => {:action => :about_you}) do |f| %>
@@ -11,7 +11,7 @@
 <tr><td><%=info_icon('')%></td><td>Besides you and your partner, how many additional adults share your home?</td>
 <td><%=f.select :num_adults, [please_select] + (0..9).map {|n| [n,n]} %></td><td></td></tr>
 <tr><td></td><td>Is your partner aware of the financial situation?</td>
-<td><%=f.select :partner_aware, [please_select, ['Yes', true], ['No', false]], {:selected => @partner_aware}%></td><td></td></tr>
+<td><%=f.select :partner_aware, [please_select, ['Yes', 'yes'], ['No', 'no']] %></td><td></td></tr>
 <tr><td></td><td>How many children aged under 18 live in your home?</td>
 <td><%=f.select :num_children, [please_select] + (0..12).map {|n| [n,n]}%></td><td></td></tr>
 <tr><td></td><td>Where in the United Kingdom do you live?</td>

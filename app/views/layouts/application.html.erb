@@ -2,14 +2,21 @@
 <html>
 <head>
   <title>DebtRemedy</title>
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "blueprint/screen", :media => :screen %>
+  <%= stylesheet_link_tag "blueprint/print", :media => :print %>
+  <%= stylesheet_link_tag "blueprint/ie", :media => :screen %>
+  <%= stylesheet_link_tag "application" %>  
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div class="container">
+<h1><a href="/">Debt Remedy on Rails</a></h1>
+<div id="debug_box">
+<div>Session ID: <%=request.session_options[:id]%></div>
+<div>Current Client: <%=@client && @client.web_number%></div>
+</div>
 
-<h1><%=link_to "Start", :action => :new%></h1>
-<div>Current client: <%=current_client.web_number%></div>
 
 <ul class="nav">
 
@@ -37,11 +44,11 @@
   <% end %>
 
 <%= yield %>
+</div>
 
-
-<pre>
+<code>
 <%=@sql.string unless @sql.nil?%>
-</pre>
+</code>
 
 </body>
 </html>

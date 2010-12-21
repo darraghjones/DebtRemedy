@@ -15,7 +15,10 @@ require 'mixology'
 
 class Client < ActiveRecord::Base
   include Calculations
- 
+  
+  validates_presence_of [:debt_remedy_for, :num_adults, :partner_aware, :num_children, :where_in_uk, :maritial_status, :gender, :age_range, :housing_status, :num_vehicals, :num_hp, :any_pets, :lost_interest, :feeling_down, :feeling_nervous, :worrying ]
+  validates_presence_of :rent_type, :if => lambda {|client| client.housing_status == "rent"}
+    
   has_many :client_answers, :dependent => :destroy, :include => :data_item
   has_many :client_debts, :dependent => :destroy
   accepts_nested_attributes_for :client_debts, :allow_destroy => true, 
@@ -29,6 +32,14 @@ class Client < ActiveRecord::Base
   
   
   DataItem.all.each do |item|
+  
+    if item.data_type == 'int'
+      validates_numericality_of "#{item.name}", :unless => lambda {|client| client.send("#{item.name}").blank?}
+    end
+    
+    if item.name.match(/_arrears$/) 
+      validates_presence_of "#{item.name}", :unless => lambda {|client| client.send("#{item.name.sub(/_arrears$/, '')}").blank?}
+    end
   
     define_method item.name do
       #a = answers.find_by_question_id(q.id)

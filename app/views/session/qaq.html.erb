@@ -1,9 +1,10 @@
-<h1>Session#qaq</h1>
+<h2>Quick assessment questions</h2>
 <%form_for @qaq, :url => {:action => :qaq} do |f| %>
 
-<table id="qaq">
+<table>
 
-<tr><td>Have you recently received a County Court claim form or Sheriff Court citation, which you have not yet responded to?</td><td><%=f.yes_no_radio_buttons(:q_1)%></td><td></td></tr>
+<tr><td style="width:500px">Have you recently received a County Court claim form or Sheriff Court citation, which you have not yet responded to?</td>
+<td style="width:300px"><%=f.yes_no_radio_buttons(:q_1)%></td><td></td></tr>
 <tr><td>Have you recently received a letter about bailiffs coming to your home, which you have not yet responded to?</td><td><%=f.yes_no_radio_buttons(:q_2)%></td><td></td></tr>
 <tr><td>Are you paying the minimum or less on any of your credit cards each month?</td><td><%=f.yes_no_radio_buttons(:q_3)%></td><td></td></tr>
 <tr><td>Do you struggle to find the money to pay your bills on time?</td><td><%=f.yes_no_radio_buttons(:q_4)%></td><td></td></tr>

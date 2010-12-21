@@ -1,10 +1,10 @@
-<h1>Session#last_not_least</h1>
+<h2>And finally</h2>
 
 <%form_for(@client, :url => {:action => :last_not_least}) do |f| %>
 
 <table>
 
-<tr><td><%=@client.institute_of_chartered_accountants_in_england_and_wales ? "yes" : "no"%><%=f.label :institute_of_chartered_accountants_in_england_and_wales, "Institute of Chartered Accountants in England and Wales"%></td>
+<tr><td><%=f.label :institute_of_chartered_accountants_in_england_and_wales, "Institute of Chartered Accountants in England and Wales"%></td>
 <td><%=f.check_box :institute_of_chartered_accountants_in_england_and_wales %></td></tr>
 
 <tr><td><%=f.label :chartered_institute_of_management_accountants, "Chartered Institute of Management Accountants"%></td>

@@ -1,14 +1,13 @@
 DebtRemedy::Application.routes.draw do
   root :to => redirect("/session/new")
+  
   get "session/new"
-
   post "session/new", :to => "session#create", :as => "login"
-
-  get "session/welcome_back"
 
   get "session/qaq"
   post "session/qaq", :to => "session#qaq_submit"
 
+  get "session/welcome_back"
   get "session/self_employed"
   get "session/web_number"
 
@@ -50,7 +49,7 @@ DebtRemedy::Application.routes.draw do
 
   get "session/closure"
 
-  post "session/send_feedback"
+  post "session/logout", :to => "session#send_feedback"
 
   resources :client_answers
 

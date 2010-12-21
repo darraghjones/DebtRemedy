@@ -1,13 +1,5 @@
 module SessionHelper
 
-  def current_client
-    Client.first
-  end
-
-  def current_client=(client)
-    session[:client] = client
-  end
-
   def please_select
     ['Please select', '']
   end

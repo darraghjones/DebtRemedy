@@ -1,14 +1,23 @@
-<h1>Session#priority</h1>
+<h2>Priority spending</h2>
 
 
 
 <%form_for @client, :url => {:action => :priority} do |f| %>
 
 <table>
+<tr><th>&nbsp;</th><th>&nbsp;</th><th>Amount</th><th>How often</th><th>Payments up to date?</th></tr>
 
+<%if @client.housing_status == 'mortgage'%>
 <tr><td></td><td>Mortgage</td><td><%=f.text_field :mortgage%></td>
 <td><%=f.frequency_select :mortgage%></td>
 <td><%=f.yes_no_radio_buttons :mortgage_arrears%></td></tr>
+
+<%elsif @client.housing_status == 'rent' %>
+<tr><td></td><td>Rent</td><td><%=f.text_field :rent%></td>
+<td><%=f.frequency_select :rent%></td>
+<td><%=f.yes_no_radio_buttons :rent_arrears%></td></tr>
+<%end%>
+
 
 <tr><td><%=info_icon('')%></td><td>Secured loans/2nd mortgage</td><td><%=f.text_field :secured_loans%></td>
 <td><%=f.frequency_select :secured_loans%></td>

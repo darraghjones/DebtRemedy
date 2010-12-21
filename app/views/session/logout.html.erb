@@ -1,14 +1,15 @@
-<h1>Session#logout</h1>
-Thank you for using Debt Remedy
+<h2>Logout</h2>
+<p>Thank you for using Debt Remedy</p>
+
+<%form_for(@feedback, :url => {:action => :logout}) do |f| %>
 
 
+<%=f.text_area :content %>
 
-<%form_tag(:action => :send_feedback) do %>
+<br/>
 
-<%=text_area_tag :content %>
-
-<%=label_tag :name, "Name"%>
-<%=text_field_tag :name %>
+<%=f.label :name, "Name"%>
+<%=f.text_field :name %>
 
 <%=submit_tag "Send feedback"%>
 

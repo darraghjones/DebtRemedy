@@ -10,4 +10,14 @@ $(document).ready(function() {
     else
       $('#client_rent_type').attr('disabled', 'disabled')
   });
+  
+  $('.delete_debt_check_box').remove();
+  $('.delete_debt_label').remove();
+  $('.delete_debt_link').show();
+  $('.delete_debt_link').click(function() {
+    debt = $(this).parent().parent();
+    $('input[type=hidden]', debt).val(1);
+    debt.hide();
+  });  
+  
 });
