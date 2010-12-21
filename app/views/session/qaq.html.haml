@@ -1,0 +1,44 @@
+%h2 Quick assessment questions
+- form_for @qaq, :url => {:action => :qaq} do |f|
+  %table#qaq
+    %tr
+      %td{:style => "width:500px"} Have you recently received a County Court claim form or Sheriff Court citation, which you have not yet responded to?
+      %td{:style => "width:300px"}= f.yes_no_radio_buttons(:q_1)
+      %td
+    %tr
+      %td Have you recently received a letter about bailiffs coming to your home, which you have not yet responded to?
+      %td= f.yes_no_radio_buttons(:q_2)
+      %td
+    %tr
+      %td Are you paying the minimum or less on any of your credit cards each month?
+      %td= f.yes_no_radio_buttons(:q_3)
+      %td
+    %tr
+      %td Do you struggle to find the money to pay your bills on time?
+      %td= f.yes_no_radio_buttons(:q_4)
+      %td
+    %tr
+      %td Has a debt collection agency contacted you about an unpaid bill?
+      %td= f.yes_no_radio_buttons(:q_5)
+      %td
+    %tr
+      %td Are you paying late fees on overdue credit or store card bills?
+      %td= f.yes_no_radio_buttons(:q_6)
+      %td
+    %tr
+      %td Are you using credit to live on?
+      %td= f.yes_no_radio_buttons(:q_7)
+      %td
+    %tr
+      %td Are you self employed?
+      %td= f.yes_no_radio_buttons(:q_8)
+      %td
+    %tr
+      %td Are you a UK citizen?
+      %td= f.yes_no_radio_buttons(:q_9)
+      %td
+    %tr
+      %td Do you live in the UK?
+      %td= f.yes_no_radio_buttons(:q_10)
+      %td
+  = submit_tag "Submit"

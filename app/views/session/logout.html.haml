@@ -1,0 +1,8 @@
+%h2 Logout
+%p Thank you for using Debt Remedy
+- form_for(@feedback, :url => {:action => :logout}) do |f|
+  = f.text_area :content
+  %br/
+  = f.label :name, "Name"
+  = f.text_field :name
+  = submit_tag "Send feedback"

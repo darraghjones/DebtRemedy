@@ -1,0 +1,8 @@
+%h2 Login
+%p#notice= notice
+- form_tag login_path do
+  = label_tag :web_number, "Enter your web number"
+  = text_field_tag :web_number
+  = submit_tag "Login"
+%h1
+  = link_to "Start", :action => :qaq

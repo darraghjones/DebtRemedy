@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @data_item.name
+%p
+  %b Default value:
+  = @data_item.default_value
+%p
+  %b Data type:
+  = @data_item.data_type
+= link_to 'Edit', edit_data_item_path(@data_item)
+|
+\#{link_to 'Back', data_items_path}

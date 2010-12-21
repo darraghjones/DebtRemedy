@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Value:
+  = @client_answer.value
+%p
+  %b Client:
+  = @client_answer.client_id
+%p
+  %b Data item:
+  = @client_answer.data_item_id
+= link_to 'Edit', edit_client_answer_path(@client_answer)
+|
+\#{link_to 'Back', client_answers_path}

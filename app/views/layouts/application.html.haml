@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title DebtRemedy
+    = stylesheet_link_tag "blueprint/screen", :media => :screen
+    = stylesheet_link_tag "blueprint/print", :media => :print
+    = stylesheet_link_tag "blueprint/ie", :media => :screen
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "http://yandex.st/highlightjs/5.16/highlight.min.js"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+    
+  %body
+    .container
+      %h1
+        %a{:href => "/"} Debt Remedy on Rails
+      #debug_box
+        %div
+          Session ID: #{request.session_options[:id]}
+        %div
+          Current Client: #{@client && @client.web_number}
+      %ul.nav
+        %li= link_to "About you", "about_you"
+        %li= link_to "Income", "your_income"
+        %li= link_to "Priority spending", "priority"
+        %li= link_to "Other spending", "other_expenses"
+        %li= link_to "Living costs", "living_expenses"
+        %li= link_to "Assets", "assets"
+        %li= link_to "Debts", "who_you_owe"
+        %li= link_to "And finally", "last_not_least"
+        %li= link_to "Recommendation", "recommendation"
+      - if @client && @client.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@client.errors.count, "error")
+            prohibited this client from being saved:
+          %ul
+            - @client.errors.full_messages.each do |msg|
+              %li= msg
+      = yield
+    %pre
+      %code.sql
+        = @sql.string unless @sql.nil?
+    :javascript
+      hljs.initHighlightingOnLoad();

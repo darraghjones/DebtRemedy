@@ -1,0 +1,60 @@
+%h2 Assets
+- form_for(@client, :url => {:action => :assets}) do |f|
+  - if ['mortgage','own'].include? @client.housing_status
+    %h3 Your property
+    %table
+      %tr
+        %td
+        %td Who owns the property?
+        %td= f.select :property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]
+      %tr
+        %td
+        %td What is the estimated market value of the property?
+        %td= f.text_field :property_value
+      %tr
+        %td
+        %td How much is outstanding on the mortgage?
+        %td= f.text_field :property_outstanding
+  %h3 Other property
+  %table
+    %tr
+      %td
+      %td Do you own or have a share in any other property?
+      %td= f.yes_no_radio_buttons :any_other_property
+    %tr
+      %td
+      %td Who owns the other property?
+      %td= f.select :other_property_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]
+    %tr
+      %td
+      %td What is the estimated market value of the other property?
+      %td= f.text_field :other_property_value
+    %tr
+      %td
+      %td How much is outstanding on the mortgage on the other property?
+      %td= f.text_field :other_property_outstanding
+  %h3 Other assets
+  %table
+    %tr
+      %td
+      %td What is the total value of any savings/investments you have?
+      %td= f.text_field :total_savings
+    %tr
+      %td
+      %td Who owns the savings or investments?
+      %td= f.select :total_savings_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]
+    %tr
+      %td
+      %td What is the total worth of any other valuable items?
+      %td= f.text_field :other_valuables
+    %tr
+      %td
+      %td Who owns these items?
+      %td= f.select :other_valuables_owner, [please_select, ['Me','0'],['My partner','1'],['Joint','2']]
+    %tr
+      %td= info_icon('')
+      %td Amount of any cash lump sum due in the next 12 months
+      %td= f.text_field :lump_sum_due
+  = link_to "Back", :action => :living_expenses
+  = submit_tag "Save & exit"
+  = submit_tag "Next"

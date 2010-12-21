@@ -1,0 +1,33 @@
+%h2 Suggested recommendation
+%h1= link_to "PDF Booklet", :action => :remedy, :format => "pdf"
+%h1= link_to "HTML Booklet", {:action => :remedy}, :target => "_blank"
+%h3 Client calculations
+%table
+  %tr
+    %th Calculation
+    %th Value
+  %tr
+    %td Total take home pay
+    %td= @client.total_take_home_pay
+%h3 Client debts
+%table
+  %tr
+    %th Debts
+    %th Value
+  - @client.client_debts.each do |d|
+    %tr
+      %td= d.creditor
+      %td= d.balance
+%h3 Client answers
+%table
+  %tr
+    %th Data item
+    %th Value
+    %th Type
+  - @client.client_answers.each do |a|
+    %tr
+      %td= a.data_item.name
+      %td= a.value
+      %td= a.value.class
+= link_to "Back", :action => :last_not_least
+= link_to "Save & exit", :action => :logout
