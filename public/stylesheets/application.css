@@ -1,6 +1,8 @@
 body {background-color:#eaeaea}
 
-.container {background-color:#fff;min-height: 600px; padding:20px;}
+.container {background-color:#fff;min-height: 600px; padding:20px; font-size:14px;}
+
+table td {padding:0px; line-height:2.2em;}
 
 select {width:180px;}
 input[type='text'] {width:100px;}
@@ -9,6 +11,7 @@ ul.nav {height:20px;}
 ul.nav li {display:inline;padding-right:5px;}
 ul.nav a { font-size:13pt; text-decoration:none; color:#333;}
 ul.nav a:hover {color:#000;text-decoration:underline;}
+ul.nav a.current {font-weight:bold}
 
 div#debug_box {position:fixed; top:10px; right:10px;}
 

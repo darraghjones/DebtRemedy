@@ -7,17 +7,19 @@
       %th Owner of debt
       %th Outstanding balance
       %th Contratual payment
+      %th 
     - f.fields_for :client_debts do |f2|
       %tr.debt
         %td= f2.text_field :creditor
-        %td= f2.text_field :debt_type
-        %td= f2.text_field :owner
-        %td= f2.text_field :balance
+        %td= f2.select :owner, [please_select, ['Credit card','creditcard'],['Overdraft','overdraft'],['Personal load','loan	']]
+        %td= f2.select :debt_type, [please_select, ['Me','me'],['My partner','partner'],['Joint','joint']] 
+        %td= f2.currency_field :balance, :class => "debt_balance"
+        %td= f2.currency_field :contractual_payment, {:disabled => true, :class => "contractual_payment"}
         %td
           = f2.check_box :_destroy, :class => "delete_debt_check_box"
           = f2.label :_destroy, "Delete?", :class => "delete_debt_label"
           %a.delete_debt_link{:href => "#", :style => "display:none"} Delete?
   %table
-    = link_to "Back", :action => :assets
-    = submit_tag "Save & exit"
-    = submit_tag "Next"
+  = submit_tag "Back", :class => "button negative"
+  = submit_tag "Save & exit", :class => "button"
+  = submit_tag "Next", :class => "button positive"

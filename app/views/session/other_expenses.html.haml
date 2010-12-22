@@ -76,6 +76,6 @@
       %td Loan from family or friends
       %td= f.currency_field :family_loans
       %td= f.frequency_select :family_loans
-  = link_to "Back", :action => :priority
-  = submit_tag "Save & exit"
-  = submit_tag "Next"
+  = submit_tag "Back", :class => "button negative"
+  = submit_tag "Save & exit", :class => "button"
+  = submit_tag "Next", :class => "button positive"

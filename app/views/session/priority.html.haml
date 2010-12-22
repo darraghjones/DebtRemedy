@@ -11,88 +11,88 @@
       %tr
         %td
         %td Mortgage
-        %td= f.text_field :mortgage
+        %td= f.currency_field :mortgage
         %td= f.frequency_select :mortgage
         %td= f.yes_no_radio_buttons :mortgage_arrears
     - elsif @client.housing_status == 'rent'
       %tr
         %td
         %td Rent
-        %td= f.text_field :rent
+        %td= f.currency_field :rent
         %td= f.frequency_select :rent
         %td= f.yes_no_radio_buttons :rent_arrears
     %tr
       %td= info_icon('')
       %td Secured loans/2nd mortgage
-      %td= f.text_field :secured_loans
+      %td= f.currency_field :secured_loans
       %td= f.frequency_select :secured_loans
       %td= f.yes_no_radio_buttons :secured_loans_arrears
     %tr
       %td
       %td Mortgage endowment premium
-      %td= f.text_field :mortgage_endowment
+      %td= f.currency_field :mortgage_endowment
       %td= f.frequency_select :mortgage_endowment
       %td= f.yes_no_radio_buttons :mortgage_endowment_arrears
     %tr
       %td
       %td Service charge/ground rent
-      %td= f.text_field :service_charge
+      %td= f.currency_field :service_charge
       %td= f.frequency_select :service_charge
       %td= f.yes_no_radio_buttons :service_charge_arrears
     %tr
       %td
       %td Council tax
-      %td= f.text_field :council_tax
+      %td= f.currency_field :council_tax
       %td= f.frequency_select :council_tax
       %td= f.yes_no_radio_buttons :council_tax_arrears
     %tr
       %td= info_icon('')
       %td TV Licence
-      %td= f.text_field :tv_license
+      %td= f.currency_field :tv_license
       %td= f.frequency_select :tv_license
       %td= f.yes_no_radio_buttons :tv_license_arrears
     %tr
       %td
       %td Water
-      %td= f.text_field :water
+      %td= f.currency_field :water
       %td= f.frequency_select :water
       %td= f.yes_no_radio_buttons :water_arrears
     %tr
       %td
       %td Electricity
-      %td= f.text_field :electricity
+      %td= f.currency_field :electricity
       %td= f.frequency_select :electricity
       %td= f.yes_no_radio_buttons :electricity_arrears
     %tr
       %td
       %td Gas
-      %td= f.text_field :gas
+      %td= f.currency_field :gas
       %td= f.frequency_select :gas
       %td= f.yes_no_radio_buttons :gas_arrears
     %tr
       %td
       %td Other household fuel
-      %td= f.text_field :household_fuel
+      %td= f.currency_field :household_fuel
       %td= f.frequency_select :household_fuel
       %td= f.yes_no_radio_buttons :household_fuel_arrears
     %tr
       %td= info_icon('')
       %td Magistrates fines
-      %td= f.text_field :mag_fines
+      %td= f.currency_field :mag_fines
       %td= f.frequency_select :mag_fines
       %td= f.yes_no_radio_buttons :mag_fines_arrears
     %tr
       %td
       %td MCCJs/decrees
-      %td= f.text_field :mccj_degrees
+      %td= f.currency_field :mccj_degrees
       %td= f.frequency_select :mccj_degrees
       %td= f.yes_no_radio_buttons :mccj_degrees_arrears
     %tr
       %td= info_icon('')
       %td Child maintenance
-      %td= f.text_field :child_maintenance
+      %td= f.currency_field :child_maintenance
       %td= f.frequency_select :maintenance
       %td= f.yes_no_radio_buttons :child_maintenance_arrears
-  = link_to "Back", :action => :your_income
-  = submit_tag "Save & exit"
-  = submit_tag "Next"
+  = submit_tag "Back", :class => "button negative"
+  = submit_tag "Save & exit", :class => "button"
+  = submit_tag "Next", :class => "button positive"

@@ -12,7 +12,7 @@
 %h3 Client debts
 %table
   %tr
-    %th Debts
+    %th Creditor
     %th Value
   - @client.client_debts.each do |d|
     %tr
@@ -29,5 +29,6 @@
       %td= a.data_item.name
       %td= a.value
       %td= a.value.class
-= link_to "Back", :action => :last_not_least
-= link_to "Save & exit", :action => :logout
+= submit_tag "Back", :class => "button negative"
+= submit_tag "Save & exit", :class => "button"
+= submit_tag "Next", :class => "button positive"

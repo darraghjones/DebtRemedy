@@ -7,17 +7,33 @@ class SessionController < ApplicationController
       return false
     end    
     @sql = StringIO.new(flash[:sql] || '')
-    ActiveRecord::Base.logger = Logger.new(@sql) 
-    if params[:commit] == "Save & exit"
-      @client.attributes = params[:client]
-      @client.save(false)
-      redirect_to :action => :logout
-      return false
-    end
+    ActiveRecord::Base.logger = Logger.new(@sql)     
   end
   
+   
   after_filter do
     flash[:sql] = @sql.string if @sql && response.status == 302    
+  end
+  
+ 
+  def back_exit_next(current)
+    navigation = [:about_you, :your_income, :priority, :other_expenses, :living_expenses, :assets, :who_you_owe, :last_not_least, :recommendation]
+    current_index = navigation.index(current)
+    case params[:commit]
+      when "Back"
+        if @client.update_attributes(params[:client])
+          return redirect_to :action => navigation[current_index - 1]
+        end
+      when "Next"
+        if @client.update_attributes(params[:client])
+          return redirect_to :action => navigation[current_index + 1]
+        end
+      when "Save & exit"
+        @client.attributes = params[:client]
+        @client.save(false)
+        return redirect_to :action => :logout
+    end
+    render :action => current
   end
   
   def new
@@ -62,15 +78,10 @@ class SessionController < ApplicationController
   end
 
   def about_you
-    @partner_aware = @client.partner_aware ? "true" : "false"
   end
 
   def about_you_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :your_income
-    else
-      render :action => :about_you
-    end
+   back_exit_next(:about_you)
   end
 
 
@@ -78,11 +89,7 @@ class SessionController < ApplicationController
   end
   
   def your_income_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :priority
-    else
-      render :action => :your_income
-    end
+    back_exit_next(:your_income)
   end
 
 
@@ -90,11 +97,7 @@ class SessionController < ApplicationController
   end
 
   def priority_submit    
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :other_expenses
-    else
-      render :action => :priority
-    end
+    back_exit_next(:priority)
   end
 
 
@@ -103,22 +106,14 @@ class SessionController < ApplicationController
   end
 
   def other_expenses_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :living_expenses
-    else
-      render :action => :other_expenses
-    end
+    back_exit_next(:other_expenses)
   end
 
   def living_expenses
   end
 
   def living_expenses_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :assets
-    else
-      render :action => :living_expenses
-    end
+    back_exit_next(:living_expenses)
   end
 
   def assets
@@ -133,11 +128,7 @@ class SessionController < ApplicationController
       validates_presence_of :other_valuables_owner, :unless => lambda {|client| client.other_valuables.blank?}
     end
     
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :who_you_owe
-    else
-      render :action => :assets
-    end
+    back_exit_next(:assets)
   end
 
   def who_you_owe
@@ -145,24 +136,14 @@ class SessionController < ApplicationController
   end
 
   def who_you_owe_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :last_not_least
-    else
-      #(6 - @client.client_debts.count).times {@client.client_debts.build}
-      render :action => :who_you_owe
-    end
+    back_exit_next(:who_you_owe)
   end
 
   def last_not_least
-    logger.debug @client.institute_of_chartered_accountants_in_england_and_wales ? "yes" : "no"
   end
 
   def last_not_least_submit
-    if @client.update_attributes(params[:client])
-      redirect_to :action => :please_wait
-    else
-      render :action => :last_not_least
-    end
+    back_exit_next(:last_not_least)
   end
 
   def please_wait
